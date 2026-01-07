@@ -114,11 +114,14 @@ type ExtractRouteParams<T extends string> =
 type Route = "/users/:userId/posts/:postId";
 type Params = ExtractRouteParams<Route>;  // "userId" | "postId"
 
-// 9. CSS-in-JS type safety
+// 9. CSS-in-JS type safety (example pattern)
 type CSSProperty = "color" | "background" | "fontSize";
+type FontSize = "12px" | "14px" | "16px" | "18px" | "20px";
+type Color = `#${string}` | `rgb(${string})` | "red" | "blue" | "green";
+
 type CSSValue<T extends CSSProperty> = 
-  T extends "fontSize" ? `${number}px` | `${number}rem` :
-  T extends "color" ? `#${string}` | `rgb(${string})` :
+  T extends "fontSize" ? FontSize :
+  T extends "color" ? Color :
   string;
 
 type StyleRule = {
@@ -128,7 +131,7 @@ type StyleRule = {
 const styles: StyleRule = {
   color: "#ff0000",       // ✓ OK
   fontSize: "16px",       // ✓ OK
-  // fontSize: "large",   // Could add validation
+  // fontSize: "large",   // ✗ Error: not in FontSize union
 };
 ```
 

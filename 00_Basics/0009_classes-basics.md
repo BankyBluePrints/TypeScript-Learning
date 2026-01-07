@@ -288,7 +288,7 @@ class Dog extends Animal {
     
     static {
       // Static initialization block
-      this.settings = loadConfig();
+      this.settings = { apiUrl: "https://api.example.com", timeout: 5000 };
     }
   }
   ```

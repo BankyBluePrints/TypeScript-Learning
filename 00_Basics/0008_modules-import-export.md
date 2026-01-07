@@ -174,7 +174,7 @@ export interface User {
 export type UserRole = "admin" | "user" | "guest";
 
 // src/services/userService.ts
-import type { User } from "../types/user";
+import type { User } from "../types/user";  // Note: relative path from services to types
 
 export class UserService {
   async getUser(id: string): Promise<User> {
@@ -188,9 +188,9 @@ export function isValidEmail(email: string): boolean {
 }
 
 // src/index.ts (entry point)
-import { UserService } from "./services/userService";
-import { isValidEmail } from "./utils/validators";
-import type { User } from "./types/user";
+import { UserService } from "./services/userService";  // Relative path
+import { isValidEmail } from "./utils/validators";    // Relative path
+import type { User } from "./types/user";             // Relative path
 
 const userService = new UserService();
 // Use services...

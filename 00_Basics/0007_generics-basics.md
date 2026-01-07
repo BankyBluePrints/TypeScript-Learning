@@ -119,6 +119,11 @@ type Result<T> = {
   data: T;
 };
 
+interface User {
+  name: string;
+  age: number;
+}
+
 let userResult: Result<User> = {
   success: true,
   data: { name: "Alice", age: 30 }
